@@ -19,8 +19,11 @@ import { Animal } from './animal.model';
         <input #age type="number" class="form-control">
       </div>
       <div class='form-group'>
-        <label>Diet</label>
-        <input #diet type="text" class="form-control">
+      <label>Diet</label>
+      <select #diet class='form-control'>
+        <option value='Carnivore'>Carnivore</option>
+        <option value='Herbivore'>Herbivore</option>
+      </select>
       </div>
       <div class='form-group'>
         <label>Exhibit/location</label>
@@ -33,8 +36,8 @@ import { Animal } from './animal.model';
       <div class='form-group'>
         <label>Sex</label>
         <select #sex class='form-control'>
-        <option value='Female'>Female</option>
-        <option value='Male'>Male</option>
+          <option value='Female'>Female</option>
+          <option value='Male'>Male</option>
         </select>
       </div>
       <div class='form-group'>
