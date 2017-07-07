@@ -34,6 +34,14 @@ This is an application that allows a zoo employee to input information for a new
 
 * Navigate to `localhost:3000` in your web browser to view the application.
 
+## Potential Additions
+
+* Allow photos to be uploaded along with the rest of an animal's information.
+
+* Search feature
+
+* Access an API to find the binomial Latin name for each animal when it is entered into the application
+
 
 ## Technologies Used
 
