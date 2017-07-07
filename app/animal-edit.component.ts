@@ -58,7 +58,7 @@ export class AnimalEditComponent {
     this.doneEditingSender.emit()
   }
 
-  formIsValid(name: string, age: string, caretakers: string) {
-    return name && Number(age) && Number(caretakers);
+  formIsValid(name: string, age: string, caretakers: string): boolean {
+    return name && Number(age) && Number(caretakers) ? true : false;
   }
 }
