@@ -27,7 +27,8 @@ import { Animal } from './animal.model';
     <input #likes type="text" class="form-control form-group">
     <label>Dislikes</label>
     <input #dislikes type="text" class="form-control form-group">
-    <button class="btn" (click)='animalAdded(name.value, species.value, age.value, diet.value, location.value, caretakers.value, sex.value, likes.value, dislikes.value); addingAnimals = false;name.value="";species.value="";age.value="";diet.value="";location.value="";caretakers.value="";sex.value="";likes.value="";dislikes.value=""'>Add Animal</button>
+    <button (click)='animalAdded(name.value, species.value, age.value, diet.value, location.value, caretakers.value, sex.value, likes.value, dislikes.value); addingAnimals = false;name.value="";species.value="";age.value="";diet.value="";location.value="";caretakers.value="";sex.value="";likes.value="";dislikes.value=""' class="btn">Add Animal</button>
+    <button (click)='addingAnimals = false' class='btn'>Cancel</button>
   </div>
   `
 })
