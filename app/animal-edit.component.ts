@@ -30,17 +30,18 @@ import { Animal } from './animal.model';
             <div class='col-md-12'>
               <div class='form-group animal-edit-group'>
                 <label>Animal name</label>
-                <input [(ngModel)]='childAnimalBeingEdited.name' type="text" class="form-control">
+                <input #name [(ngModel)]='childAnimalBeingEdited.name' type="text" class="form-control">
               </div>
               <div class='form-group animal-edit-group'>
                 <label>Age</label>
-                <input [(ngModel)]='childAnimalBeingEdited.age' type="number" class="form-control">
+                <input #age [(ngModel)]='childAnimalBeingEdited.age' type="number" class="form-control">
               </div>
               <div class='form-group animal-edit-group'>
                 <label>Number of caretakers</label>
-                <input [(ngModel)]='childAnimalBeingEdited.caretakers' type="number" class="form-control">
+                <input #caretakers [(ngModel)]='childAnimalBeingEdited.caretakers' type="number" class="form-control">
               </div>
-              <button (click)='userDoneEditing()' class='btn'>Save changes</button>
+              <button *ngIf="formIsValid(name.value, age.value, caretakers.value)" (click)='userDoneEditing()' class='btn'>Save changes</button>
+              <h3 class="bg-danger"  id='edit-warning-text' *ngIf="!formIsValid(name.value, age.value, caretakers.value)">Fields cannot be left blank.</h3>
             </div>
           </div>
         </div>
@@ -55,5 +56,9 @@ export class AnimalEditComponent {
 
   userDoneEditing(): void {
     this.doneEditingSender.emit()
+  }
+
+  formIsValid(name: string, age: string, caretakers: string) {
+    return name && Number(age) && Number(caretakers);
   }
 }
