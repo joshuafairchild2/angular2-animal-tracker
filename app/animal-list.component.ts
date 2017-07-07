@@ -7,11 +7,11 @@ import { Animal } from './animal.model';
     <h1>Viewing:
       <select (change)="filterChange($event.target.value)">
         <option value='allAnimals'>All animals</option>
-        <option value='Adult animals (greater than 2 yrs old)'>Adult animals</option>
-        <option value='Young animals (less than 2 yrs old)'>Young animals</option>
+        <option value='adultAnimals'>Adult animals (greater than 2 yrs old)</option>
+        <option value='youngAnimals'>Young animals (2 yrs old or younger)</option>
       </select>
     </h1>
-    <div *ngFor='let animal of childAnimalList' class="well animal-card">
+    <div *ngFor='let animal of childAnimalList | age:filterType' class="well animal-card">
       <h1>{{animal.name}}</h1>
       <h3>{{animal.sex}} {{animal.species}}, age: {{animal.age}}</h3>
       <h3>Diet: {{animal.diet}}</h3>
