@@ -8,7 +8,7 @@ import { Animal } from './animal.model';
 
 export class UniqueSpeciesPipe implements PipeTransform {
   transform(input: Animal[]) {
-    const speciesArr = input.map(animal => animal.species);
+    const speciesArr: string[] = input.map(animal => animal.species);
     return Array.from(new Set(speciesArr));
   }
 }

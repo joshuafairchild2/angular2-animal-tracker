@@ -17,7 +17,10 @@ import { Animal } from './animal.model';
         <option *ngFor='let species of childAnimalList | uniqueSpecies' [value]='species'>{{species}}</option>
       </select>
     </h1>
-    <div *ngFor='let animal of childAnimalList | age:ageFilterType | species:speciesFilterType' class="well animal-card">
+    <h1>Filter by animal name:
+      <input [(ngModel)]='nameFilter'>
+    </h1>
+    <div *ngFor='let animal of childAnimalList | age:ageFilterType | species:speciesFilterType | name:nameFilter' class="well animal-card">
       <h1>{{animal.name}}</h1>
       <h3>{{animal.sex}} {{animal.species}}, age: {{animal.age}}</h3>
       <h3>Diet: {{animal.diet}}</h3>
@@ -32,6 +35,7 @@ export class AnimalListComponent {
   @Output() editAnimalSender = new EventEmitter();
   ageFilterType: string = 'allAnimals';
   speciesFilterType: string = 'allSpecies';
+  nameFilter: string;
 
   editButtonClicked(animal: Animal): void {
     this.editAnimalSender.emit(animal);
