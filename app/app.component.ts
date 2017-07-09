@@ -28,7 +28,6 @@ export class AppComponent {
 
   editAnimal(animalToEdit: Animal): void {
     this.animalBeingEdited = animalToEdit;
-    console.log(this.animalBeingEdited)
   }
 
   finishEditing(): void {
