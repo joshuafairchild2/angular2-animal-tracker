@@ -8,12 +8,7 @@ import { Animal } from './animal.model';
 
 export class UniqueSpeciesPipe implements PipeTransform {
   transform(input: Animal[]) {
-    let output: string[] = [];
-    for (let i: number = 0; i < input.length; i++) {
-      if (output.indexOf(input[i].species) === -1) {
-        output.push(input[i].species);
-      }
-    }
-    return output;
+    const speciesArr = input.map(animal => animal.species);
+    return Array.from(new Set(speciesArr));
   }
 }
