@@ -60,7 +60,7 @@ export class AnimalNewComponent {
 
   animalAdded(name: string, species: string, age: string, diet: string, location: string, caretakers: string, sex: string, likes: string, dislikes: string): void {
     if(name && species && Number(age) && diet && location && Number(caretakers) && sex && likes && dislikes) {
-      const newAnimal: Animal = new Animal(name, species, Number(age), diet, location, Number(caretakers), sex, likes, dislikes);
+      const newAnimal: Animal = new Animal(species, name, Number(age), diet, location, Number(caretakers), sex, likes, dislikes);
       this.newAnimalSender.emit(newAnimal);
       this.addingAnimals = false;
     }

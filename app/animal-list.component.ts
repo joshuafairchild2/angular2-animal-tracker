@@ -4,14 +4,20 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list-component',
   template: `
-    <h1>Viewing:
-      <select (change)="filterChange($event.target.value)">
+    <h1>Filter by age:
+      <select (change)="ageFilterChange($event.target.value)">
         <option value='allAnimals'>All animals</option>
         <option value='adultAnimals'>Adult animals (greater than 2 yrs old)</option>
         <option value='youngAnimals'>Young animals (2 yrs old or younger)</option>
       </select>
     </h1>
-    <div *ngFor='let animal of childAnimalList | age:filterType' class="well animal-card">
+    <h1>Filter by species:
+      <select (change)="speciesFilterChange($event.target.value)">
+        <option value="allSpecies">All species</option>
+        <option *ngFor='let species of childAnimalList | uniqueSpecies' [value]='species'>{{species}}</option>
+      </select>
+    </h1>
+    <div *ngFor='let animal of childAnimalList | age:ageFilterType | species:speciesFilterType' class="well animal-card">
       <h1>{{animal.name}}</h1>
       <h3>{{animal.sex}} {{animal.species}}, age: {{animal.age}}</h3>
       <h3>Diet: {{animal.diet}}</h3>
@@ -24,13 +30,18 @@ import { Animal } from './animal.model';
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
   @Output() editAnimalSender = new EventEmitter();
-  filterType: string = 'allAnimals';
+  ageFilterType: string = 'allAnimals';
+  speciesFilterType: string = 'allSpecies';
 
   editButtonClicked(animal: Animal): void {
     this.editAnimalSender.emit(animal);
   }
 
-  filterChange(filterOption: string): void {
-    this.filterType = filterOption;
+  ageFilterChange(filterOption: string): void {
+    this.ageFilterType = filterOption;
+  }
+
+  speciesFilterChange(filterOption: string): void {
+    this.speciesFilterType = filterOption;
   }
 }
